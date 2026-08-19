@@ -43,7 +43,7 @@ ClickSound.SoundId = "rbxassetid://6895079853"
 ClickSound.Volume = 1.5
 ClickSound.Parent = SoundService
 
-local function playClick() playClickSound = pcall(function() ClickSound:Play() end) end
+local function playClick() pcall(function() ClickSound:Play() end) end
 
 -- 🎬 [1] المشهد السينمائي (Intro - 12 ثانية)
 local IntroFrame = Instance.new("Frame")
@@ -196,6 +196,7 @@ ScriptsListLayout.Padding = UDim.new(0, 10)
 ScriptsListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 ScriptsListLayout.Parent = ScriptsPage
 
+-- أزرار السكربتات
 local TacoFarmButton = Instance.new("TextButton")
 TacoFarmButton.Size = UDim2.new(0.92, 0, 0, 42)
 TacoFarmButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
@@ -223,6 +224,20 @@ local SpinStroke = Instance.new("UIStroke")
 SpinStroke.Color = Color3.fromRGB(50, 205, 50)
 SpinStroke.Thickness = 1.5
 SpinStroke.Parent = SpinRngButton
+
+local AutoGrabButton = Instance.new("TextButton")
+AutoGrabButton.Size = UDim2.new(0.92, 0, 0, 42)
+AutoGrabButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
+AutoGrabButton.Text = "EXECTUE AUTO GRAB 🫲"
+AutoGrabButton.TextColor3 = Color3.fromRGB(200, 255, 200)
+AutoGrabButton.Font = Enum.Font.SourceSansBold
+AutoGrabButton.TextSize = 14
+AutoGrabButton.Parent = ScriptsPage
+Instance.new("UICorner", AutoGrabButton).CornerRadius = UDim.new(0, 10)
+local GrabStroke = Instance.new("UIStroke")
+GrabStroke.Color = Color3.fromRGB(50, 205, 50)
+GrabStroke.Thickness = 1.5
+GrabStroke.Parent = AutoGrabButton
 
 -- ⚙️ تبويب الإعدادات
 local SettingsPage = Instance.new("ScrollingFrame")
@@ -276,6 +291,7 @@ end
 
 applyButtonAnimation(TacoFarmButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/AUTO_FARM_TACO.lua"))() end)
 applyButtonAnimation(SpinRngButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/Spin_Rng.lua"))() end)
+applyButtonAnimation(AutoGrabButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/Auto_grab.lua"))() end)
 
 -- 🎨 نظام الألوان الثيمات
 local activeThemeConnection = nil
@@ -298,6 +314,9 @@ local function applyFullThemeColors(mainBg, strokeCol, textCol, btnBg, btnText)
     SpinRngButton.BackgroundColor3 = btnBg
     SpinRngButton.TextColor3 = btnText
     SpinStroke.Color = strokeCol
+    AutoGrabButton.BackgroundColor3 = btnBg
+    AutoGrabButton.TextColor3 = btnText
+    GrabStroke.Color = strokeCol
 end
 
 local function applyTheme(themeName)
