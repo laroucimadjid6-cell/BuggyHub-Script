@@ -111,8 +111,8 @@ PhonkMusic:Play()
 
 -- 🛢️ [2] النافذة الرئيسية
 local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 480, 0, 270)
-MainFrame.Position = UDim2.new(0.5, -240, 0.5, -135)
+MainFrame.Size = UDim2.new(0, 480, 0, 290)
+MainFrame.Position = UDim2.new(0.5, -240, 0.5, -145)
 MainFrame.BackgroundColor3 = Color3.fromRGB(18, 30, 20)
 MainFrame.Active = true
 MainFrame.Draggable = false
@@ -127,7 +127,7 @@ MainStroke.Thickness = 2
 MainStroke.Parent = MainFrame
 
 local Title = Instance.new("TextLabel")
-Title.Position = UDim2.new(0, 20, 0, 12)
+Title.Position = UDim2.new(0, 20, 0, 8)
 Title.Size = UDim2.new(1, -80, 0, 30)
 Title.BackgroundTransparency = 1
 Title.Text = "☢️ Buggy Hub | Brainrot"
@@ -139,15 +139,39 @@ Title.Parent = MainFrame
 
 local CloseButton = Instance.new("TextButton")
 CloseButton.Size = UDim2.new(0, 30, 0, 30)
-CloseButton.Position = UDim2.new(1, -40, 0, 10)
+CloseButton.Position = UDim2.new(1, -40, 0, 8)
 CloseButton.BackgroundTransparency = 1
 CloseButton.Text = "❌"
 CloseButton.TextSize = 18
 CloseButton.Parent = MainFrame
 
+-- ➖ [خط أفقي علوي]
+local TopDivider = Instance.new("Frame")
+TopDivider.Position = UDim2.new(0, 10, 0, 44)
+TopDivider.Size = UDim2.new(1, -20, 0, 2)
+TopDivider.BackgroundColor3 = Color3.fromRGB(50, 205, 50)
+TopDivider.BorderSizePixel = 0
+TopDivider.Parent = MainFrame
+
+-- ➖ [خط أفقي سفلي]
+local BottomDivider = Instance.new("Frame")
+BottomDivider.Position = UDim2.new(0, 10, 1, -42)
+BottomDivider.Size = UDim2.new(1, -20, 0, 2)
+BottomDivider.BackgroundColor3 = Color3.fromRGB(50, 205, 50)
+BottomDivider.BorderSizePixel = 0
+BottomDivider.Parent = MainFrame
+
+-- ⎪ [خط رأسي جانبي]
+local VerticalDivider = Instance.new("Frame")
+VerticalDivider.Position = UDim2.new(0, 120, 0, 46)
+VerticalDivider.Size = UDim2.new(0, 2, 1, -90)
+VerticalDivider.BackgroundColor3 = Color3.fromRGB(50, 205, 50)
+VerticalDivider.BorderSizePixel = 0
+VerticalDivider.Parent = MainFrame
+
 local SidebarContainer = Instance.new("ScrollingFrame")
-SidebarContainer.Position = UDim2.new(0, 15, 0, 55)
-SidebarContainer.Size = UDim2.new(0, 105, 1, -70)
+SidebarContainer.Position = UDim2.new(0, 10, 0, 52)
+SidebarContainer.Size = UDim2.new(0, 102, 1, -100)
 SidebarContainer.BackgroundTransparency = 1
 SidebarContainer.ScrollBarThickness = 2
 SidebarContainer.AutomaticCanvasSize = Enum.AutomaticSize.Y
@@ -178,12 +202,12 @@ SettingsButton.Parent = SidebarContainer
 Instance.new("UICorner", SettingsButton).CornerRadius = UDim.new(0, 8)
 
 local ContentArea = Instance.new("Frame")
-ContentArea.Position = UDim2.new(0, 130, 0, 55)
-ContentArea.Size = UDim2.new(1, -145, 1, -70)
+ContentArea.Position = UDim2.new(0, 130, 0, 52)
+ContentArea.Size = UDim2.new(1, -140, 1, -100)
 ContentArea.BackgroundTransparency = 1
 ContentArea.Parent = MainFrame
 
--- 📜 تبويب السكربتات (ترتيب الأزرار تحت بعضها)
+-- 📜 تبويب السكربتات
 local ScriptsPage = Instance.new("ScrollingFrame")
 ScriptsPage.Size = UDim2.new(1, 0, 1, 0)
 ScriptsPage.BackgroundTransparency = 1
@@ -193,73 +217,86 @@ ScriptsPage.Parent = ContentArea
 
 local ScriptsListLayout = Instance.new("UIListLayout")
 ScriptsListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-ScriptsListLayout.Padding = UDim.new(0, 10)
+ScriptsListLayout.Padding = UDim.new(0, 8)
 ScriptsListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 ScriptsListLayout.Parent = ScriptsPage
 
--- [1] الزر الأول
+-- الأزرار داخل قائمة السكربتات
 local TacoFarmButton = Instance.new("TextButton")
 TacoFarmButton.LayoutOrder = 1
-TacoFarmButton.Size = UDim2.new(0.92, 0, 0, 42)
+TacoFarmButton.Size = UDim2.new(0.95, 0, 0, 38)
 TacoFarmButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
 TacoFarmButton.Text = "EXECUTE AUTO TACO FARM 🌮"
 TacoFarmButton.TextColor3 = Color3.fromRGB(200, 255, 200)
 TacoFarmButton.Font = Enum.Font.SourceSansBold
-TacoFarmButton.TextSize = 14
+TacoFarmButton.TextSize = 13
 TacoFarmButton.Parent = ScriptsPage
-Instance.new("UICorner", TacoFarmButton).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", TacoFarmButton).CornerRadius = UDim.new(0, 8)
 local TacoStroke = Instance.new("UIStroke")
 TacoStroke.Color = Color3.fromRGB(50, 205, 50)
 TacoStroke.Thickness = 1.5
 TacoStroke.Parent = TacoFarmButton
 
--- [2] الزر الثاني
 local SpinRngButton = Instance.new("TextButton")
 SpinRngButton.LayoutOrder = 2
-SpinRngButton.Size = UDim2.new(0.92, 0, 0, 42)
+SpinRngButton.Size = UDim2.new(0.95, 0, 0, 38)
 SpinRngButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
 SpinRngButton.Text = "EXECUTE AUTO SPIN RNG 🔄"
 SpinRngButton.TextColor3 = Color3.fromRGB(200, 255, 200)
 SpinRngButton.Font = Enum.Font.SourceSansBold
-SpinRngButton.TextSize = 14
+SpinRngButton.TextSize = 13
 SpinRngButton.Parent = ScriptsPage
-Instance.new("UICorner", SpinRngButton).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", SpinRngButton).CornerRadius = UDim.new(0, 8)
 local SpinStroke = Instance.new("UIStroke")
 SpinStroke.Color = Color3.fromRGB(50, 205, 50)
 SpinStroke.Thickness = 1.5
 SpinStroke.Parent = SpinRngButton
 
--- [3] الزر الثالث
 local AutoGrabButton = Instance.new("TextButton")
 AutoGrabButton.LayoutOrder = 3
-AutoGrabButton.Size = UDim2.new(0.92, 0, 0, 42)
+AutoGrabButton.Size = UDim2.new(0.95, 0, 0, 38)
 AutoGrabButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
 AutoGrabButton.Text = "EXECTUE AUTO GRAB 🫲"
 AutoGrabButton.TextColor3 = Color3.fromRGB(200, 255, 200)
 AutoGrabButton.Font = Enum.Font.SourceSansBold
-AutoGrabButton.TextSize = 14
+AutoGrabButton.TextSize = 13
 AutoGrabButton.Parent = ScriptsPage
-Instance.new("UICorner", AutoGrabButton).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", AutoGrabButton).CornerRadius = UDim.new(0, 8)
 local GrabStroke = Instance.new("UIStroke")
 GrabStroke.Color = Color3.fromRGB(50, 205, 50)
 GrabStroke.Thickness = 1.5
 GrabStroke.Parent = AutoGrabButton
 
--- [4] الزر الرابع (الجديد)
 local CodeRedeemerButton = Instance.new("TextButton")
 CodeRedeemerButton.LayoutOrder = 4
-CodeRedeemerButton.Size = UDim2.new(0.92, 0, 0, 42)
+CodeRedeemerButton.Size = UDim2.new(0.95, 0, 0, 38)
 CodeRedeemerButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
 CodeRedeemerButton.Text = "CODE REDEEMER 🏷️"
 CodeRedeemerButton.TextColor3 = Color3.fromRGB(200, 255, 200)
 CodeRedeemerButton.Font = Enum.Font.SourceSansBold
-CodeRedeemerButton.TextSize = 14
+CodeRedeemerButton.TextSize = 13
 CodeRedeemerButton.Parent = ScriptsPage
-Instance.new("UICorner", CodeRedeemerButton).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", CodeRedeemerButton).CornerRadius = UDim.new(0, 8)
 local CodeStroke = Instance.new("UIStroke")
 CodeStroke.Color = Color3.fromRGB(50, 205, 50)
 CodeStroke.Thickness = 1.5
 CodeStroke.Parent = CodeRedeemerButton
+
+-- 💬 [زر الديسكورد - في الأسفل تحت الخط السفي]
+local DiscordButton = Instance.new("TextButton")
+DiscordButton.Position = UDim2.new(0.5, -150, 1, -35)
+DiscordButton.Size = UDim2.new(0, 300, 0, 28)
+DiscordButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
+DiscordButton.Text = "Discord Server 💬"
+DiscordButton.TextColor3 = Color3.fromRGB(200, 255, 200)
+DiscordButton.Font = Enum.Font.SourceSansBold
+DiscordButton.TextSize = 13
+DiscordButton.Parent = MainFrame
+Instance.new("UICorner", DiscordButton).CornerRadius = UDim.new(0, 6)
+local DiscordStroke = Instance.new("UIStroke")
+DiscordStroke.Color = Color3.fromRGB(50, 205, 50)
+DiscordStroke.Thickness = 1.5
+DiscordStroke.Parent = DiscordButton
 
 -- ⚙️ تبويب الإعدادات
 local SettingsPage = Instance.new("ScrollingFrame")
@@ -276,22 +313,22 @@ SettingsListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 SettingsListLayout.Parent = SettingsPage
 
 local ExecutorLabel = Instance.new("TextLabel")
-ExecutorLabel.Size = UDim2.new(0.92, 0, 0, 30)
+ExecutorLabel.Size = UDim2.new(0.95, 0, 0, 30)
 ExecutorLabel.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
 ExecutorLabel.Text = "Executor: " .. executorName
 ExecutorLabel.TextColor3 = Color3.fromRGB(200, 255, 200)
 ExecutorLabel.Font = Enum.Font.SourceSansBold
-ExecutorLabel.TextSize = 14
+ExecutorLabel.TextSize = 13
 ExecutorLabel.Parent = SettingsPage
 Instance.new("UICorner", ExecutorLabel).CornerRadius = UDim.new(0, 6)
 
 local ThemeTitle = Instance.new("TextLabel")
-ThemeTitle.Size = UDim2.new(0.92, 0, 0, 25)
+ThemeTitle.Size = UDim2.new(0.95, 0, 0, 25)
 ThemeTitle.BackgroundTransparency = 1
 ThemeTitle.Text = "🎨 Change Theme"
 ThemeTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 ThemeTitle.Font = Enum.Font.SourceSansBold
-ThemeTitle.TextSize = 16
+ThemeTitle.TextSize = 15
 ThemeTitle.TextXAlignment = Enum.TextXAlignment.Left
 ThemeTitle.Parent = SettingsPage
 
@@ -316,6 +353,26 @@ applyButtonAnimation(SpinRngButton, function() loadstring(game:HttpGet("https://
 applyButtonAnimation(AutoGrabButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/Auto_grab.lua"))() end)
 applyButtonAnimation(CodeRedeemerButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/Code_Redeemer.lua"))() end)
 
+-- وظيفة زر الديسكورد (نسخ الرابط وإظهار نص Copied)
+local isCopying = false
+applyButtonAnimation(DiscordButton, function()
+    pcall(function()
+        if setclipboard then
+            setclipboard("https://discord.gg/B5ACE5pP")
+        elseif toclipboard then
+            toclipboard("https://discord.gg/B5ACE5pP")
+        end
+    end)
+    
+    if not isCopying then
+        isCopying = true
+        DiscordButton.Text = "Copied to clipboard!"
+        task.wait(2)
+        DiscordButton.Text = "Discord Server 💬"
+        isCopying = false
+    end
+end)
+
 -- 🎨 نظام الثيمات
 local activeThemeConnection = nil
 local function stopAnim() if activeThemeConnection then activeThemeConnection:Disconnect() activeThemeConnection = nil end end
@@ -323,6 +380,9 @@ local function stopAnim() if activeThemeConnection then activeThemeConnection:Di
 local function applyFullThemeColors(mainBg, strokeCol, textCol, btnBg, btnText)
     MainFrame.BackgroundColor3 = mainBg
     MainStroke.Color = strokeCol
+    TopDivider.BackgroundColor3 = strokeCol
+    BottomDivider.BackgroundColor3 = strokeCol
+    VerticalDivider.BackgroundColor3 = strokeCol
     Title.TextColor3 = textCol
     ThemeTitle.TextColor3 = textCol
     ExecutorLabel.BackgroundColor3 = btnBg
@@ -343,6 +403,9 @@ local function applyFullThemeColors(mainBg, strokeCol, textCol, btnBg, btnText)
     CodeRedeemerButton.BackgroundColor3 = btnBg
     CodeRedeemerButton.TextColor3 = btnText
     CodeStroke.Color = strokeCol
+    DiscordButton.BackgroundColor3 = btnBg
+    DiscordButton.TextColor3 = btnText
+    DiscordStroke.Color = strokeCol
 end
 
 local function applyTheme(themeName)
@@ -385,12 +448,12 @@ applyButtonAnimation(SettingsButton, function() ScriptsPage.Visible = false Sett
 local themes = {"Default", "Glacier", "Radiant", "Obsidian", "Prism", "Volcano", "Arctic"}
 for _, name in ipairs(themes) do
     local btn = Instance.new("TextButton")
-    btn.Size = UDim2.new(0.92, 0, 0, 32)
+    btn.Size = UDim2.new(0.95, 0, 0, 32)
     btn.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
     btn.Text = name
     btn.TextColor3 = Color3.fromRGB(255, 255, 255)
     btn.Font = Enum.Font.SourceSansBold
-    btn.TextSize = 14
+    btn.TextSize = 13
     btn.Parent = SettingsPage
     Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
     
@@ -451,7 +514,7 @@ local function showUI()
     MainFrame.Size = UDim2.new(0, 0, 0, 0)
     MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
     TweenService:Create(MainFrame, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-        Size = UDim2.new(0, 480, 0, 270), Position = UDim2.new(0.5, -240, 0.5, -135)
+        Size = UDim2.new(0, 480, 0, 290), Position = UDim2.new(0.5, -240, 0.5, -145)
     }):Play()
     task.wait(0.4)
     isAnimating = false
@@ -481,7 +544,7 @@ task.spawn(function()
     MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
     
     TweenService:Create(MainFrame, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-        Size = UDim2.new(0, 480, 0, 270), Position = UDim2.new(0.5, -240, 0.5, -135)
+        Size = UDim2.new(0, 480, 0, 290), Position = UDim2.new(0.5, -240, 0.5, -145)
     }):Play()
     
     ToggleButton.Visible = false
