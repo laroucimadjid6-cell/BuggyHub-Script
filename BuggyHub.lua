@@ -245,6 +245,22 @@ GrabStroke.Color = Color3.fromRGB(50, 205, 50)
 GrabStroke.Thickness = 1.5
 GrabStroke.Parent = AutoGrabButton
 
+-- [4] الزر الرابع (الجديد)
+local CodeRedeemerButton = Instance.new("TextButton")
+CodeRedeemerButton.LayoutOrder = 4
+CodeRedeemerButton.Size = UDim2.new(0.92, 0, 0, 42)
+CodeRedeemerButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
+CodeRedeemerButton.Text = "CODE REDEEMER 🏷️"
+CodeRedeemerButton.TextColor3 = Color3.fromRGB(200, 255, 200)
+CodeRedeemerButton.Font = Enum.Font.SourceSansBold
+CodeRedeemerButton.TextSize = 14
+CodeRedeemerButton.Parent = ScriptsPage
+Instance.new("UICorner", CodeRedeemerButton).CornerRadius = UDim.new(0, 10)
+local CodeStroke = Instance.new("UIStroke")
+CodeStroke.Color = Color3.fromRGB(50, 205, 50)
+CodeStroke.Thickness = 1.5
+CodeStroke.Parent = CodeRedeemerButton
+
 -- ⚙️ تبويب الإعدادات
 local SettingsPage = Instance.new("ScrollingFrame")
 SettingsPage.Size = UDim2.new(1, 0, 1, 0)
@@ -298,6 +314,7 @@ end
 applyButtonAnimation(TacoFarmButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/AUTO_FARM_TACO.lua"))() end)
 applyButtonAnimation(SpinRngButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/Spin_Rng.lua"))() end)
 applyButtonAnimation(AutoGrabButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/Auto_grab.lua"))() end)
+applyButtonAnimation(CodeRedeemerButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/Code_Redeemer.lua"))() end)
 
 -- 🎨 نظام الثيمات
 local activeThemeConnection = nil
@@ -323,6 +340,9 @@ local function applyFullThemeColors(mainBg, strokeCol, textCol, btnBg, btnText)
     AutoGrabButton.BackgroundColor3 = btnBg
     AutoGrabButton.TextColor3 = btnText
     GrabStroke.Color = strokeCol
+    CodeRedeemerButton.BackgroundColor3 = btnBg
+    CodeRedeemerButton.TextColor3 = btnText
+    CodeStroke.Color = strokeCol
 end
 
 local function applyTheme(themeName)
