@@ -21,7 +21,7 @@ local SoundService = game:GetService("SoundService")
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
--- كشف المحاكي المستخدم (Delta / Medium / Fluxus / الخ)
+-- كشف المحاكي المستخدم
 local executorName = "Unknown"
 if identifyexecutor then 
     executorName = identifyexecutor()
@@ -183,7 +183,7 @@ ContentArea.Size = UDim2.new(1, -145, 1, -70)
 ContentArea.BackgroundTransparency = 1
 ContentArea.Parent = MainFrame
 
--- 📜 تبويب السكربتات
+-- 📜 تبويب السكربتات (ترتيب الأزرار تحت بعضها)
 local ScriptsPage = Instance.new("ScrollingFrame")
 ScriptsPage.Size = UDim2.new(1, 0, 1, 0)
 ScriptsPage.BackgroundTransparency = 1
@@ -192,12 +192,14 @@ ScriptsPage.AutomaticCanvasSize = Enum.AutomaticSize.Y
 ScriptsPage.Parent = ContentArea
 
 local ScriptsListLayout = Instance.new("UIListLayout")
+ScriptsListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 ScriptsListLayout.Padding = UDim.new(0, 10)
 ScriptsListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 ScriptsListLayout.Parent = ScriptsPage
 
--- أزرار السكربتات
+-- [1] الزر الأول
 local TacoFarmButton = Instance.new("TextButton")
+TacoFarmButton.LayoutOrder = 1
 TacoFarmButton.Size = UDim2.new(0.92, 0, 0, 42)
 TacoFarmButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
 TacoFarmButton.Text = "EXECUTE AUTO TACO FARM 🌮"
@@ -211,7 +213,9 @@ TacoStroke.Color = Color3.fromRGB(50, 205, 50)
 TacoStroke.Thickness = 1.5
 TacoStroke.Parent = TacoFarmButton
 
+-- [2] الزر الثاني
 local SpinRngButton = Instance.new("TextButton")
+SpinRngButton.LayoutOrder = 2
 SpinRngButton.Size = UDim2.new(0.92, 0, 0, 42)
 SpinRngButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
 SpinRngButton.Text = "EXECUTE AUTO SPIN RNG 🔄"
@@ -225,7 +229,9 @@ SpinStroke.Color = Color3.fromRGB(50, 205, 50)
 SpinStroke.Thickness = 1.5
 SpinStroke.Parent = SpinRngButton
 
+-- [3] الزر الثالث
 local AutoGrabButton = Instance.new("TextButton")
+AutoGrabButton.LayoutOrder = 3
 AutoGrabButton.Size = UDim2.new(0.92, 0, 0, 42)
 AutoGrabButton.BackgroundColor3 = Color3.fromRGB(30, 45, 30)
 AutoGrabButton.Text = "EXECTUE AUTO GRAB 🫲"
@@ -273,7 +279,7 @@ ThemeTitle.TextSize = 16
 ThemeTitle.TextXAlignment = Enum.TextXAlignment.Left
 ThemeTitle.Parent = SettingsPage
 
--- 🛠️ أنيميشن ضغط الأزرار
+-- 🛠️ أنيميشن الضغط
 local function applyButtonAnimation(button, callback)
     button.MouseButton1Down:Connect(function()
         playClick()
@@ -293,7 +299,7 @@ applyButtonAnimation(TacoFarmButton, function() loadstring(game:HttpGet("https:/
 applyButtonAnimation(SpinRngButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/Spin_Rng.lua"))() end)
 applyButtonAnimation(AutoGrabButton, function() loadstring(game:HttpGet("https://raw.githubusercontent.com/api-jnkie-com/scripts/main/Auto_grab.lua"))() end)
 
--- 🎨 نظام الألوان الثيمات
+-- 🎨 نظام الثيمات
 local activeThemeConnection = nil
 local function stopAnim() if activeThemeConnection then activeThemeConnection:Disconnect() activeThemeConnection = nil end end
 
